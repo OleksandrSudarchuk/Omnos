@@ -8,7 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     let welcomeView = WelcomeView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
