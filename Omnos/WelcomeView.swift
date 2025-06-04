@@ -29,7 +29,7 @@ class WelcomeView: UIView {
         return stackView
     }()
     
-    let welcomeLabel: UILabel = {
+    private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to"
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
@@ -38,13 +38,13 @@ class WelcomeView: UIView {
         return label
     }()
     
-    let logoImageView: UIImageView = {
+    private let logoImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "logo")
         image.contentMode = .scaleAspectFit
         return image
     }()
-    let topContentLabel: UILabel = {
+    private  let topContentLabel: UILabel = {
         let label = UILabel()
         label.text = "You can start scanning immediately and sign up later."
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -54,7 +54,7 @@ class WelcomeView: UIView {
         return label
     }()
     
-    let topButton: UIButton = {
+     let topButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueButton
         button.setTitle("Let start now", for: .normal)
@@ -65,9 +65,9 @@ class WelcomeView: UIView {
         return button
     }()
     
-    let separetor = SepratorView()
+    private  let separetor = SepratorView()
     
-    let middelContentLabel: UILabel = {
+    private  let middelContentLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign up to enjoy exclusive features and access services faster."
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -77,7 +77,7 @@ class WelcomeView: UIView {
         return label
     }()
     
-    let middleButton: UIButton = {
+      let middleButton: UIButton = {
         let button = UIButton()
         //button.backgroundColor = .clear
         button.setTitle("Sing up", for: .normal)
@@ -89,14 +89,14 @@ class WelcomeView: UIView {
         return button
     }()
     
-    let buttomHStack: UIStackView = {
+    private  let buttomHStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .center
         return stack
     }()
     
-    let buttomContentLabel: UILabel = {
+    private  let buttomContentLabel: UILabel = {
         let label = UILabel()
         label.text = "Already have an account?"
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -105,7 +105,7 @@ class WelcomeView: UIView {
         return label
     }()
     
-    let buttomButton: UIButton = {
+       let buttomButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setTitle("Login", for: .normal)

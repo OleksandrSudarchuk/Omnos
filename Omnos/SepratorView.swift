@@ -18,18 +18,16 @@ class SepratorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let leftSeparator: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .grey20
-        return view
+    let leftSeparator: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "devider")
+        return image
     }()
     
-    let rightSeparator: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .grey20
-        return view
+    let rightSeparator: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "devider")
+        return image
     }()
     
     let orLabel: UILabel = {
