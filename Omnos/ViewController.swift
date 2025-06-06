@@ -32,11 +32,11 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func addTargetsForMainEmtyController() {
-        welcomeView.topButton.addTarget(self, action: #selector(mainEmptyController), for: .touchUpInside)
+        welcomeView.startButton.addTarget(self, action: #selector(mainEmptyController), for: .touchUpInside)
     }
     
     func addTargetForLoginController() {
-        welcomeView.middleButton.addTarget(self, action: #selector(loginController), for: .touchUpInside)
+        welcomeView.singUpButton.addTarget(self, action: #selector(loginController), for: .touchUpInside)
     }
  
     

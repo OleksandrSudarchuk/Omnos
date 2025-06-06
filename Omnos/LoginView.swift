@@ -39,7 +39,6 @@ class LoginView: UIView {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 20
-       // stack.distribution = .fillEqually
         return stack
     }()
     
@@ -69,21 +68,23 @@ class LoginView: UIView {
     }()
     
     private let inputEmail: UITextField = {
-        let fild = UITextField()
-        fild.backgroundColor = .grey10
-        fild.placeholder = "Enter you email"
-        fild.textColor = .grey60
-        fild.textAlignment = .left
-        fild.keyboardType = .emailAddress
-        fild.borderStyle = .roundedRect
-        fild.autocapitalizationType = .none
-        return fild
+        let field = UITextField()
+        field.backgroundColor = .grey10
+        field.placeholder = "    Enter your email"
+        field.textColor = .grey60
+        field.textAlignment = .left
+        field.keyboardType = .emailAddress
+        field.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        field.layer.cornerRadius = 10
+        field.layer.masksToBounds = true
+        field.autocapitalizationType = .none
+        return field
     }()
     
     private let mainPasswordStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 20
         return stack
     }()
     
@@ -106,20 +107,31 @@ class LoginView: UIView {
     private let inputPassword: UITextField = {
         let fild = UITextField()
         fild.backgroundColor = .grey10
-        fild.placeholder = "Enter your password"
+        fild.placeholder = "   Enter your password"
         fild.textColor = .grey60
         fild.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         fild.isSecureTextEntry = true
-        fild.borderStyle = .roundedRect
+        
+        fild.layer.cornerRadius = 10
+        fild.layer.masksToBounds = true
         
         let eyeImage = UIImageView(image: UIImage(named: "eye"))
-        fild.rightView?.addSubview(eyeImage)
+        eyeImage.contentMode = .scaleAspectFit
+        eyeImage.frame = CGRect(x: -24, y: 0, width: 20, height: 20)
+        
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
+        eyeImage.center = container.center
+        container.addSubview(eyeImage)
+        
+        fild.rightView = container
+        fild.rightViewMode = .always
         return fild
     }()
     
-    private let forgotPasswordStackView: UIStackView = {
+    private let forgotpasswordStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.alignment = .trailing
         return stack
     }()
     
@@ -164,8 +176,8 @@ class LoginView: UIView {
         
         button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        
-        
+        button.tintColor = .white
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
         return button
     }()
     
@@ -208,8 +220,8 @@ private extension LoginView {
         mainPasswordStackView.addArrangedSubview(subPasswordStackView)
         subPasswordStackView.addArrangedSubview(passwordLabel)
         subPasswordStackView.addArrangedSubview(inputPassword)
-        mainPasswordStackView.addArrangedSubview(forgotPasswordStackView)
-        forgotPasswordStackView.addArrangedSubview(forgotPasswordButton)
+        mainPasswordStackView.addArrangedSubview(forgotpasswordStackView)
+        forgotpasswordStackView.addArrangedSubview(forgotPasswordButton)
         mainStackView.addArrangedSubview(loginStackView)
         loginStackView.addArrangedSubview(loginButton)
         loginStackView.addArrangedSubview(devider)
@@ -281,10 +293,11 @@ private extension LoginView {
             make.width.equalTo(335)
         }
         
-        forgotPasswordStackView.snp.makeConstraints { make in
+        forgotpasswordStackView.snp.makeConstraints { make in
             make.height.equalTo(18)
             make.width.equalTo(116)
-            make.trailing.bottom.equalTo(mainPasswordStackView)
+            make.trailing.equalTo(mainPasswordStackView)
+            
         }
         forgotPasswordButton.snp.makeConstraints { make in
             make.height.equalTo(18)

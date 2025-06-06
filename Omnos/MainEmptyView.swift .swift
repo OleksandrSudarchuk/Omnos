@@ -23,6 +23,8 @@ class MainEmptyView: UIView {
         let search = UISearchBar()
         search.searchTextField.backgroundColor = .white
         search.placeholder = "Search"
+        search.layer.cornerRadius = 20
+        search.layer.masksToBounds = true
         return search
     }()
     
@@ -30,7 +32,7 @@ class MainEmptyView: UIView {
     
     private let newProjectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("+ New project", for: .normal)
+        button.setTitle("+   New project", for: .normal)
         button.backgroundColor = UIColor.black100
         button.titleLabel?.textColor = UIColor.white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
@@ -52,7 +54,7 @@ private extension MainEmptyView {
             make.height.equalTo(44)
             make.width.equalTo(335)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalToSuperview().inset(100)
+            make.top.equalToSuperview().inset(110)
         }
         
         contentView.snp.makeConstraints { make in

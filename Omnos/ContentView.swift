@@ -23,11 +23,31 @@ class ContentView: UIView {
     private let mainVStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.alignment = .center
         stack.spacing = 10
             return stack
     }()
-   
-    private let frameWithRectangleView = FrameForRectangleView()
+    
+    private let stackViewForCube: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        return stack
+    }()
+    
+    
+    private let vectorImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Frame vector")
+        return image
+    }()
+    
+    private let cubeImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "cube")
+        return image
+    }()
+
+ private let cubeImageView = CubeImageView()
 
     
     private let subVStack: UIStackView = {
@@ -61,8 +81,10 @@ private extension ContentView {
     func setUpConstrains() {
         backgroundColor = .clear
         addSubview(mainVStack)
-       
-        mainVStack.addArrangedSubview(frameWithRectangleView)
+        
+        mainVStack.addArrangedSubview(stackViewForCube)
+        stackViewForCube.addArrangedSubview(cubeImageView)
+      
         mainVStack.addArrangedSubview(subVStack)
         subVStack.addArrangedSubview(topLabel)
         subVStack.addArrangedSubview(buttomLabel)
@@ -70,24 +92,27 @@ private extension ContentView {
         mainVStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        frameWithRectangleView.snp.makeConstraints { make in
+        stackViewForCube.snp.makeConstraints { make in
+            make.height.width.equalTo(130)
+        }
+   
+        cubeImageView.snp.makeConstraints { make in
             make.height.width.equalTo(128)
-            make.top.equalToSuperview()
-           // make.centerY.equalToSuperview()
         }
-        subVStack.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.height.equalTo(53)
-            make.height.equalTo(258)
+            subVStack.snp.makeConstraints { make in
+                make.bottom.equalToSuperview()
+                make.height.equalTo(53)
+                make.height.equalTo(258)
+            }
+            topLabel.snp.makeConstraints { make in
+                make.height.equalTo(24)
+                make.width.equalTo(258)
+            }
+            buttomLabel.snp.makeConstraints { make in
+                make.height.equalTo(21)
+                make.width.equalTo(249)
+            }
+            
         }
-        topLabel.snp.makeConstraints { make in
-            make.height.equalTo(24)
-            make.width.equalTo(258)
-        }
-        buttomLabel.snp.makeConstraints { make in
-            make.height.equalTo(21)
-            make.width.equalTo(249)
-        }
-        
     }
-}
+

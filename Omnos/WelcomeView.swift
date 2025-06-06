@@ -54,7 +54,7 @@ class WelcomeView: UIView {
         return label
     }()
     
-     let topButton: UIButton = {
+     let startButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueButton
         button.setTitle("Let start now", for: .normal)
@@ -77,9 +77,8 @@ class WelcomeView: UIView {
         return label
     }()
     
-      let middleButton: UIButton = {
+      let singUpButton: UIButton = {
         let button = UIButton()
-        //button.backgroundColor = .clear
         button.setTitle("Sing up", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(.blueButton, for: .normal)
@@ -126,10 +125,10 @@ private extension WelcomeView {
         mainVStack.addArrangedSubview(welcomeLabel)
         mainVStack.addArrangedSubview(logoImageView)
         mainVStack.addArrangedSubview(topContentLabel)
-        mainVStack.addArrangedSubview(topButton)
+        mainVStack.addArrangedSubview(startButton)
         mainVStack.addArrangedSubview(separetor)
         mainVStack.addArrangedSubview(middelContentLabel)
-        mainVStack.addArrangedSubview(middleButton)
+        mainVStack.addArrangedSubview(singUpButton)
         addSubview(buttomHStack)
         buttomHStack.addArrangedSubview(buttomContentLabel)
         buttomHStack.addArrangedSubview(buttomButton)
@@ -155,7 +154,7 @@ private extension WelcomeView {
             make.width.equalTo(246)
         }
         
-        topButton.snp.makeConstraints { make in
+        startButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalTo(335)
         }
@@ -170,7 +169,7 @@ private extension WelcomeView {
             make.width.equalTo(246)
         }
         
-        middleButton.snp.makeConstraints { make in
+        singUpButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalTo(335)
         }

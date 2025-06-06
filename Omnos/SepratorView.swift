@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class SepratorView: UIView {
+    //MARK: - Init
     init() {
         super.init(frame: .zero)
         configure()
@@ -17,20 +18,20 @@ class SepratorView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let leftSeparator: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "devider")
-        return image
+    // Create view
+    private let leftSeparator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .grey20
+        return view
     }()
     
-    let rightSeparator: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "devider")
-        return image
+    private let rightSeparator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .grey20
+        return view
     }()
     
-    let orLabel: UILabel = {
+    private let orLabel: UILabel = {
         let label = UILabel()
         label.text = "Or"
         label.font = .systemFont(ofSize: 14, weight: .regular)
@@ -38,39 +39,34 @@ class SepratorView: UIView {
         return label
     }()
     
-    let HStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-//        stack.distribution = .fillEqually
-//        stack.spacing = 8
-        return stack
-    }()
+    
 }
 
 extension SepratorView {
+    // Constrains
     func configure() {
-        addSubview(HStack)
-        HStack.addArrangedSubview(leftSeparator)
-        HStack.addArrangedSubview(orLabel)
-        HStack.addArrangedSubview(rightSeparator)
-        
-        HStack.snp.makeConstraints { make in
-            make.width.equalTo(335)
-            make.height.equalTo(21)
-        }
+       
+        addSubview(leftSeparator)
+        addSubview(orLabel)
+        addSubview(rightSeparator)
         
         leftSeparator.snp.makeConstraints { make in
-            make.width.equalTo(149)
+            make.centerY.equalTo(orLabel)
+            make.leading.equalToSuperview()
+            make.trailing.equalTo(orLabel.snp.leading).inset(-8)
             make.height.equalTo(1)
         }
         
         orLabel.snp.makeConstraints { make in
             make.width.equalTo(17)
             make.height.equalTo(21)
+            make.center.equalToSuperview()
         }
         
         rightSeparator.snp.makeConstraints { make in
-            make.width.equalTo(149)
+            make.centerY.equalTo(orLabel)
+            make.leading.equalTo(orLabel.snp.trailing).inset(-8)
+            make.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
